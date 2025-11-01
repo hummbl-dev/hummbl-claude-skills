@@ -1,0 +1,114 @@
+name: Validate Skills
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Validate Skill Format
+        run: |
+          echo "Validating skill format..."
+          
+          # Find all SKILL.md files
+          skills=$(find . -name "SKILL.md" -not -path "*/node_modules/*" -not -path "*/.git/*")
+          
+          if [ -z "$skills" ]; then
+            echo "❌ No SKILL.md files found"
+            exit 1
+          fi
+          
+          valid=0
+          invalid=0
+          
+          for skill in $skills; do
+            echo "Checking $skill..."
+            
+            # Check for YAML frontmatter
+            if ! head -n 1 "$skill" | grep -q "^---$"; then
+              echo "❌ Missing YAML frontmatter in $skill"
+              invalid=$((invalid + 1))
+              continue
+            fi
+            
+            # Check for name field
+            if ! grep -q "^name:" "$skill"; then
+              echo "❌ Missing 'name' field in $skill"
+              invalid=$((invalid + 1))
+              continue
+            fi
+            
+            # Check for description field
+            if ! grep -q "^description:" "$skill"; then
+              echo "❌ Missing 'description' field in $skill"
+              invalid=$((invalid + 1))
+              continue
+            fi
+            
+            # Check description length (max 1024 chars)
+            desc_length=$(sed -n '/^description:/,/^---$/p' "$skill" | wc -c)
+            if [ "$desc_length" -gt 1024 ]; then
+              echo "⚠️  Description too long in $skill (${desc_length} > 1024 chars)"
+            fi
+            
+            # Check for closing frontmatter
+            if ! sed -n '2,10p' "$skill" | grep -q "^---$"; then
+              echo "❌ Malformed YAML frontmatter in $skill"
+              invalid=$((invalid + 1))
+              continue
+            fi
+            
+            # Check for content after frontmatter
+            content_lines=$(tail -n +11 "$skill" | wc -l)
+            if [ "$content_lines" -lt 50 ]; then
+              echo "⚠️  Skill seems short in $skill (${content_lines} lines)"
+            fi
+            
+            echo "✅ $skill is valid"
+            valid=$((valid + 1))
+          done
+          
+          echo ""
+          echo "Summary: $valid valid, $invalid invalid"
+          
+          if [ "$invalid" -gt 0 ]; then
+            exit 1
+          fi
+      
+      - name: Check Directory Structure
+        run: |
+          echo "Checking directory structure..."
+          
+          skills=$(find . -name "SKILL.md" -not -path "*/node_modules/*" -not -path "*/.git/*")
+          
+          for skill in $skills; do
+            dir=$(dirname "$skill")
+            
+            # Check for README.md
+            if [ ! -f "$dir/README.md" ]; then
+              echo "⚠️  Missing README.md in $dir"
+            else
+              echo "✅ $dir has README.md"
+            fi
+          done
+      
+      - name: Validate Markdown
+        uses: DavidAnson/markdownlint-cli2-action@v14
+        with:
+          globs: |
+            **/*.md
+            !node_modules
+          config: |
+            {
+              "MD013": false,
+              "MD033": false,
+              "MD041": false
+            }
+        continue-on-error: true
