@@ -3,14 +3,14 @@
 Production-ready Claude skills for HUMMBL mental models framework development, multi-agent coordination, and repository management.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Skills: 5](https://img.shields.io/badge/Skills-5-blue.svg)]()
+[![Skills: 6](https://img.shields.io/badge/Skills-6-blue.svg)]()
 [![Quality: Production](https://img.shields.io/badge/Quality-Production-success.svg)]()
 
 ## Overview
 
-This repository contains 5 production-ready Claude skills following the [Anthropic Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agent-skills) specification. Each skill provides comprehensive guidance, templates, and examples for specific domains.
+This repository contains 6 production-ready Claude skills following the [Anthropic Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agent-skills) specification. Each skill provides comprehensive guidance, templates, and examples for specific domains.
 
-**Total Lines of Expertise:** 3,000+ lines of production-grade guidance
+**Total Lines of Expertise:** 3,600+ lines of production-grade guidance
 
 ## Skills Catalog
 
@@ -139,6 +139,34 @@ This repository contains 5 production-ready Claude skills following the [Anthrop
 - Strategic thinking workflows
 
 **Trigger Keywords:** transformation, workflow, P/IN/CO/DE/RE/SY, mental model application
+
+---
+
+### 6. UI/UX Designer
+
+**File:** `ui-ux-designer/`  
+**Lines:** 600+  
+**Purpose:** Modern UI/UX design for web and mobile applications
+
+**Capabilities:**
+- Design principles (visual hierarchy, consistency, affordance)
+- User research and testing
+- Interaction patterns
+- Accessibility (WCAG 2.1)
+- Responsive design (mobile-first)
+- Modern frameworks (Tailwind CSS, shadcn/ui, Material UI)
+- Complete workflow (research → design → implementation → testing)
+- Code examples and patterns
+
+**Use Cases:**
+- Web application UI design
+- Mobile app interfaces
+- Design system creation
+- Accessibility compliance
+- Responsive layouts
+- Component libraries
+
+**Trigger Keywords:** UI/UX, design, interface, accessibility, responsive, Tailwind, user experience
 
 ---
 
