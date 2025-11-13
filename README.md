@@ -10,7 +10,7 @@ Production-ready Claude skills for HUMMBL mental models framework development, m
 
 This repository contains 6 production-ready Claude skills following the [Anthropic Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agent-skills) specification. Each skill provides comprehensive guidance, templates, and examples for specific domains.
 
-**Total Lines of Expertise:** 3,600+ lines of production-grade guidance
+**Total Lines of Expertise:** 3,359 lines of production-grade guidance
 
 ## Skills Catalog
 
@@ -88,32 +88,35 @@ This repository contains 6 production-ready Claude skills following the [Anthrop
 
 ---
 
-### 4. HUMMBL Framework
+### 4. HUMMBL Base120 Framework
 
 **File:** `hummbl-framework/`  
-**Lines:** 340+  
-**Purpose:** Complete Base120 mental models reference (120 models)
+**Lines:** 239  
+**Version:** 1.0-beta (Definitive Reference)  
+**Purpose:** Complete Base120 mental models reference with official codes, names, and one-line definitions
 
 **Capabilities:**
-- All 120 models across 6 transformations
-- Perspective (P1-P20)
+- All 120 validated models with precise coding system
+- Perspective / Identity (P1-P20)
 - Inversion (IN1-IN20)
 - Composition (CO1-CO20)
 - Decomposition (DE1-DE20)
 - Recursion (RE1-RE20)
 - Meta-Systems (SY1-SY20)
-- Model selection framework (SY19)
-- Quality standards (9.2/10)
-- Application templates
+- Model selection guidance with quick reference table
+- One-line definitions for rapid agent coordination
+- Validation checklist to ensure correct usage
+- Complete provenance and source documentation
 
 **Use Cases:**
 - Mental model reference and application
-- Problem-solving with structured thinking
-- Framework-based analysis
+- Model selection for problem-solving
+- Transformation analysis
 - MCP server development (model knowledge)
+- Agent training and coordination
 - Strategic decision-making
 
-**Trigger Keywords:** HUMMBL, Base120, mental models, transformations, framework
+**Trigger Keywords:** HUMMBL, Base120, mental models, transformations, framework, P1-P20, IN1-IN20, CO1-CO20, DE1-DE20, RE1-RE20, SY1-SY20
 
 ---
 
